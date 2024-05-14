@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Simple Blog</title>
     @include('layouts.partial.styles')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"/>
     @stack('css')
     <style>
         .category-custom-card {
@@ -38,7 +37,6 @@
         <!-----End Blog Post----->
     </div>
     @include('layouts.partial.scripts')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
     @if (Session::has('success'))
         <script>

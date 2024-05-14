@@ -52,7 +52,9 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                     <div class="card">
-                        <div class="card-header">Register</div>
+                        <div class="card-header">
+                            Register
+                        </div>
                         <div class="card-body">
                             <form name="my-form"  action="{{ route('register.submit') }}" method="post">
                                 @csrf
@@ -119,7 +121,6 @@
                                         <button type="submit" class="btn btn-primary">
                                         Register
                                         </button>
-                                        <a href="">Forget Passowrd</a>
                                     </div>
                                 </div>
                             </form>

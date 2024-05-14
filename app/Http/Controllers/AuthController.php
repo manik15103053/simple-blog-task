@@ -34,7 +34,7 @@ class AuthController extends Controller
         $user->username = $request->username;
         $user->password = Hash::make($request->password);
         $user->save();
-        return redirect()->back()->with('success','Registration has successfully');
+        return redirect()->back()->with('success','Registration has been successfully');
 
         }
     public function login(){
@@ -51,7 +51,7 @@ class AuthController extends Controller
 
         $check = $request->only('email', 'password');
         if(Auth::guard('web')->attempt($check)){
-            return redirect()->route('dashboard');
+            return redirect()->route('dashboard')->with('success','Login Has been Successfully');
         }else{
             return redirect()->route('login')->with('fail', 'Incorrect Credentials');
         }
