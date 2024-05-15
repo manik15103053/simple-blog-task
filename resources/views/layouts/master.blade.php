@@ -24,6 +24,55 @@
             color: rgb(22 41 70);
             text-decoration: none;
         }
+        div#navbarNav {
+            background: #000;
+        }
+        .main_navbar li.nav-item a.nav-link {
+            font-weight: 500;
+            padding: 15px 20px;
+            transition: all .5s ease-in-out;
+            position: relative;
+            color: #ffffffb3;
+        }
+        .main_navbar li.nav-item a.nav-link::after {
+            position: absolute;
+            content: '';
+            left: 0;
+            top: 80%;
+            background: #fff;
+            width: 0;
+            height: 1px;
+            transition: all .5s ease-in-out;
+            transform-origin: left;
+        }
+        .main_navbar li.nav-item a.nav-link:hover:after{
+            width: 100%;
+            transform-origin: right;
+        }
+        .main_navbar li.nav-item a.nav-link:hover {
+            color: #fff;
+        }
+        .list-group.category_item a {
+            background: #f7f7f7 !important;
+            color: #000;
+            padding: 10px;
+            font-weight: 500;
+            border: 0;
+            transition: all .5s ease-in-out;
+            border-bottom: 2px solid #fff;
+        }
+        .list-group.category_item a:hover{}
+        .card-body:hover h5.card-title.custom-title.text-center {
+            color: #000;
+        }
+        .list-group.category_item a.active {
+            background: black !important;
+            color: #fff;
+        }
+        .list-group.category_item a:hover {
+            background: #000 !important;
+            color: #fff;
+        }
       </style>
 </head>
 <body>

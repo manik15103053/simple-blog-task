@@ -14,9 +14,9 @@ class BlogController extends Controller
     public function index()
     {
         if(Auth::user()->user_role == 1){
-            $data['blogs'] = Blog::orderBy('id','desc')->paginate(8);
+            $data['blogs'] = Blog::orderBy('id','desc')->paginate(5);
         }elseif(Auth::user()->user_role == 2){
-            $data['blogs'] = Blog::where('created_by',Auth::user()->id)->orderBy('id','desc')->paginate(8);
+            $data['blogs'] = Blog::where('created_by',Auth::user()->id)->orderBy('id','desc')->paginate(5);
         }
         return view('pages.blog.index',$data);
     }

@@ -1,7 +1,7 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light p-0">
     <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-        <ul class="navbar-nav">
-            <li class="nav-item active">
+        <ul class="navbar-nav main_navbar">
+            <li class="nav-item">
                 <a class="nav-link" href="{{ route('frontend.index') }}">Home</a>
             </li>
             <li class="nav-item">

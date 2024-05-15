@@ -1,10 +1,10 @@
 @extends('layouts.master')
 @section('main-content')
     <div class="row mt-5">
-        <div class="col-md-2">
+        <div class="col-md-3">
             @include('layouts.partial.sidebar')
         </div>
-        <div class="col-md-10">
+        <div class="col-md-9">
             <div class="row">
                 <div class="col-md-4">
                     <div class="card">

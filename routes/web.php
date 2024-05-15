@@ -39,6 +39,7 @@ Route::post('/password-reset-submit',[ForgetPasswordController::class,'resetPass
 
 Route::middleware(['auth:web'])->group(function(){
     Route::get('/dashboard',[UserDashboardController::class,'dashboard'])->name('dashboard');
+    Route::get('/users',[UserDashboardController::class,'allUser'])->name('allUser');
     Route::get('/logout', [AuthController::class,'logout'])->name('logout');
 
     //Category

@@ -1,10 +1,10 @@
 @extends('layouts.master')
 @section('main-content')
     <div class="row mt-5">
-        <div class="col-md-2">
+        <div class="col-md-3">
             @include('layouts.partial.sidebar')
         </div>
-        <div class="col-md-10">
+        <div class="col-md-9">
             <div class="container">
                 <div class="card">
                     <div class="card-header">
@@ -31,7 +31,7 @@
                                             <td>
                                                 <img src="{{ asset($item->image) }}" alt="" width="65" height="60">
                                             </td>
-                                            <td>{{ $item->title }}</td>
+                                            <td>{{ Str::limit($item->title,25,'..') }}</td>
                                             <td>{{ $item->category->name ?? "Na" }}</td>
                                             <td>{{ date('d M Y',strtotime($item->publication_date)) }}</td>
                                             <td>

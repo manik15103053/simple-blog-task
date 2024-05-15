@@ -26,4 +26,12 @@ class UserDashboardController extends Controller
         $data['total_user'] = User::where('id', '!=', 1)->count();
         return view('pages.dashboard',$data);
     }
+
+    public function allUser()
+    {
+        if(Auth::user()->user_role == 1){
+            $data['users'] = User::where('id', '!=', 1)->orderBy('id','desc')->paginate();
+            return view('pages.user.user',$data);
+        }
+    }
 }

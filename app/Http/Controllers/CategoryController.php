@@ -12,9 +12,9 @@ class CategoryController extends Controller
     public function index()
     {
         if(Auth::user()->user_role == 1){
-            $data['categories'] = Category::orderBy('priority','asc')->paginate(8);
+            $data['categories'] = Category::orderBy('priority','asc')->paginate(6);
         }elseif(Auth::user()->user_role == 2){
-            $data['categories'] = Category::where('created_by',Auth::user()->id)->orderBy('priority','asc')->paginate(8);
+            $data['categories'] = Category::where('created_by',Auth::user()->id)->orderBy('priority','asc')->paginate(6);
         }
 
         return view('pages.category.index',$data);
