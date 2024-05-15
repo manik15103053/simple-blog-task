@@ -52,28 +52,15 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                     <div class="card">
-                        <div class="card-header">
-                            Register
-                        </div>
+                        <div class="card-header">Change Password</div>
                         <div class="card-body">
-                            <form name="my-form"  action="{{ route('register.submit') }}" method="post">
+                            <form name="my-form"  action="{{ route('reset-password.submit') }}" method="post">
                                 @csrf
-                                <div class="form-group row">
-                                    <label for="full_name" class="col-md-4 col-form-label text-md-right">Name</label>
-                                    <div class="col-md-6">
-                                        <input type="text" id="full_name" class="form-control" name="name" value="{{ old('name') }}">
-                                        <span class="text-danger">
-                                            @error('name')
-                                                {{ $message }}
-                                            @enderror
-                                        </span>
-                                    </div>
-                                </div>
-
+                                <input type="hidden" name="token" value="{{ $token }}">
                                 <div class="form-group row">
                                     <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
                                     <div class="col-md-6">
-                                        <input type="text" id="email_address" class="form-control" name="email" value="{{ old('email') }}">
+                                        <input type="text" id="email_address" class="form-control" name="email" value="{{ $email ? : old('email') }}">
                                         <span class="text-danger">
                                             @error('email')
                                                 {{ $message }}
@@ -81,19 +68,6 @@
                                         </span>
                                     </div>
                                 </div>
-
-                                <div class="form-group row">
-                                    <label for="user_name" class="col-md-4 col-form-label text-md-right">User Name</label>
-                                    <div class="col-md-6">
-                                        <input type="text" id="user_name" class="form-control" name="username" value="{{ old('username') }}">
-                                        <span class="text-danger">
-                                            @error('username')
-                                                {{ $message }}
-                                            @enderror
-                                        </span>
-                                    </div>
-                                </div>
-
                                 <div class="form-group row">
                                     <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
                                     <div class="col-md-6">
@@ -107,21 +81,22 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="cpassword" class="col-md-4 col-form-label text-md-right">Confirm Password</label>
+                                    <label for="password_confirmation" class="col-md-4 col-form-label text-md-right">Confirm Password</label>
                                     <div class="col-md-6">
-                                        <input type="password" id="cpassword" class="form-control" name="cpassword">
+                                        <input type="password" id="password_confirmation" class="form-control" name="password_confirmation">
                                         <span class="text-danger">
-                                            @error('cpassword')
+                                            @error('password_confirmation')
                                                 {{ $message }}
                                             @enderror
                                         </span>
                                     </div>
                                 </div>
-                                    <div class="col-md-6 offset-md-4">
-                                        <button type="submit" class="btn btn-primary">
-                                        Register
-                                        </button>
-                                    </div>
+                                <div class="col-md-6 offset-md-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        Change Password
+                                    </button>
+
+                                </div>
                                 </div>
                             </form>
                         </div>

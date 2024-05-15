@@ -52,14 +52,24 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                     <div class="card">
-                        <div class="card-header">Login</div>
+                        <div class="card-header">Reset Password
+                            @if(Session::get('success'))
+                                <p class="text-success text-center">
+                                    {{ Session::get('success') }}
+                                </p>
+                            @endif
+                        </div>
+
                         <div class="card-body">
-                            <form name="my-form"  action="{{ route('check.login') }}" method="post">
+                            <p class="text-center">
+                                Enter your email address and we will send a link to reset your password.
+                            </p>
+                            <form name="my-form"  action="{{ route('forgot.password.sendLink') }}" method="post">
                                 @csrf
                                 <div class="form-group row">
                                     <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
                                     <div class="col-md-6">
-                                        <input type="text" id="email_address" class="form-control" name="email" value="{{  old('email') }}">
+                                        <input type="text" id="email_address" class="form-control" name="email" value="{{ old('email') }}">
                                         <span class="text-danger">
                                             @error('email')
                                                 {{ $message }}
@@ -67,22 +77,11 @@
                                         </span>
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="present_address" class="col-md-4 col-form-label text-md-right">Password</label>
-                                    <div class="col-md-6">
-                                        <input type="password" id="present_address" class="form-control" name="password">
-                                        <span class="text-danger">
-                                            @error('password')
-                                                {{ $message }}
-                                            @enderror
-                                        </span>
-                                    </div>
-                                </div>
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
-                                    Login
+                                        Send Reset Password link
                                     </button>
-                                    <a href="{{ route('forget.password') }}">Forget Passowrd</a>
+
                                 </div>
                                 </div>
                             </form>

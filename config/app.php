@@ -175,7 +175,7 @@ return [
         Yajra\DataTables\FractalServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
-        App\Repositories\RepositoriesServiceProvider::class,
+   
     ])->toArray(),
 
     /*

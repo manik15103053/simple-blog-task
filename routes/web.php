@@ -7,6 +7,7 @@ use \App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserDashboardController;
 use Illuminate\Support\Facades\Artisan;
 use \App\Http\Controllers\BlogController;
+use App\Http\Controllers\ForgetPasswordController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,6 +29,11 @@ Route::get('/register',[AuthController::class,'register'])->name('register');
 Route::post('/register-submit',[AuthController::class,'regisSub'])->name('register.submit');
 Route::get('/login',[AuthController::class,'login'])->name('login');
 Route::post('/check',[AuthController::class,'check'])->name('check.login');
+Route::get('/forget-password',[ForgetPasswordController::class,'forgetPass'])->name('forget.password');
+Route::post('/forget-password-send-reset-link',[ForgetPasswordController::class,'sendResetLink'])->name('forgot.password.sendLink');
+Route::get('/password/reset/{token}',[ForgetPasswordController::class,'showResetForm'])->name('reset.password.token');
+Route::post('/password-reset-submit',[ForgetPasswordController::class,'resetPassword'])->name('reset-password.submit');
+
 
 
 Route::middleware(['auth:web'])->group(function(){
