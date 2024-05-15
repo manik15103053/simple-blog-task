@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/',[FrontendController::class,'index'])->name('frontend.index');
+Route::get('/all-blogs/{slug?}',[FrontendController::class,'blog'])->name('frontend.blog');
 
 //Registration
 Route::get('/register',[AuthController::class,'register'])->name('register');

@@ -1,24 +1,8 @@
 @extends('layouts.master')
 
 @section('main-content')
-<h4 class="mt-5 mb-3">Category</h4>
-        <div class="row">
-            @if($categories->isNotEmpty())
-                @foreach($categories as $item)
-                    <div class="col-sm-2">
-                        <div class="card category-custom-card">
-                            <div class="card-body">
-                                <h5 class="card-title custom-title text-center"><a href="{{ route('frontend.blog',$item->slug) }}" class="category-link">{{ $item->name ?? "" }}</a></h5>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            @endif
-        </div>
-        <!----end Card Item---->
         <!-----Blog Post----->
-        <h4 class="mt-5">Blog Post</h4>
-        <div class="row">
+        <div class="row mt-5">
             @if($blogs->isNotEmpty())
                 @foreach($blogs as $blog)
                     <div class="col-md-4">
