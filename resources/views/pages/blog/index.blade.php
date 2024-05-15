@@ -24,7 +24,9 @@
                                     <th scope="col">Action</th>
                                 </tr>
                                 </thead>
+
                                 <tbody>
+
                                     @foreach($blogs as $key=> $item)
                                         <tr>
                                             <td>{{ $key + 1 }}</td>
@@ -32,7 +34,12 @@
                                                 <img src="{{ asset($item->image) }}" alt="" width="65" height="60">
                                             </td>
                                             <td>{{ Str::limit($item->title,25,'..') }}</td>
-                                            <td>{{ $item->category->name ?? "Na" }}</td>
+                                            <td>
+                                                @foreach(json_decode($item->category_id) as $key => $categoryId)
+                                                    {{ \App\Models\Category::find($categoryId)->name ?? "N/A" }}
+                                                @endforeach
+
+                                            </td>
                                             <td>{{ date('d M Y',strtotime($item->publication_date)) }}</td>
                                             <td>
                                                 <a href="{{ route('blog.edit',$item->slug) }}" class="btn btn-info btn-sm"><i class="fa fa-edit text-white"></i></a>
@@ -43,7 +50,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        {{ $blogs->links() }}
+{{--                        {{ $blogs->links() }}--}}
                     </div>
                 </div>
             </div>

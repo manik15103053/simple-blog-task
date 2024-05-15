@@ -6,7 +6,7 @@
         <div class="row">
             @foreach($categories as $item)
                 <div class="col-sm-2 mb-4">
-                    <a href="{{ route('frontend.blog',$item->slug) }}" class="card category-custom-card">
+                    <a href="{{ route('frontend.postByCat',$item->slug) }}" class="card category-custom-card">
                         <div class="card-body">
                             <h5 class="card-title custom-title text-center">{{ $item->name ?? "" }}</h5>
                         </div>

@@ -14,10 +14,11 @@ class BlogController extends Controller
     public function index()
     {
         if(Auth::user()->user_role == 1){
-            $data['blogs'] = Blog::orderBy('id','desc')->paginate(5);
+            $data['blogs'] = Blog::orderBy('id','desc')->get();
         }elseif(Auth::user()->user_role == 2){
-            $data['blogs'] = Blog::where('created_by',Auth::user()->id)->orderBy('id','desc')->paginate(5);
+            $data['blogs'] = Blog::where('created_by',Auth::user()->id)->orderBy('id','desc')->get();
         }
+
         return view('pages.blog.index',$data);
     }
 
@@ -31,8 +32,8 @@ class BlogController extends Controller
         $this->validate($request,[
 
             'title'             =>  'required|max:100',
-            'category_id'       =>   'required|integer',
-            'text_content'           =>   'required|string',
+            'category_id'       =>   'required',
+            'text_content'      =>   'required|string',
             'publication_date'  =>   'required|date',
         ],
             [
@@ -52,7 +53,7 @@ class BlogController extends Controller
 
             $blog->title = $request->title;
             $blog->slug = Str::slug($request->title);
-            $blog->category_id = $request->category_id;
+            $blog->category_id = json_encode($request->category_id);
             $blog->text_content = $request->text_content;
             $blog->publication_date = $request->publication_date;
             $blog->created_by = auth()->id();
@@ -77,7 +78,7 @@ class BlogController extends Controller
         $this->validate($request,[
 
             'title'             =>  'required|max:100',
-            'category_id'       =>   'required|integer',
+            'category_id'       =>   'required',
             'text_content'      =>   'required|string',
             'publication_date'  =>   'required|date',
         ],
@@ -98,7 +99,7 @@ class BlogController extends Controller
 
             $blog->title = $request->title;
             $blog->slug = Str::slug($request->title);
-            $blog->category_id = $request->category_id;
+            $blog->category_id = json_encode($request->category_id);
             $blog->text_content = $request->text_content;
             $blog->publication_date = Carbon::parse($request->publication_date);
             $blog->updated_by = auth()->id();

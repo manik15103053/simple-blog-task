@@ -18,17 +18,19 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="name">Category <small class="text-danger">*</small></label>
-                                        <select name="category_id" id="category_id" class="form-control">
-                                            <option selected disabled>Select One</option>
-                                            @foreach($categories as $item)
-                                                <option value="{{ $item->id }}" {{ $blog->category_id == $item->id ? "selected" : "" }}>{{ $item->name }}</option>
+                                        <select name="category_id[]" id="category_id" class="form-control select2" multiple>
+                                            <option  disabled>Select One</option>
+                                            @foreach($categories as $category)
+                                                <option value="{{ $category->id }}" {{ in_array($category->id, json_decode($blog->category_id)) ? 'selected' : '' }}>
+                                                    {{ $category->name }}
+                                                </option>
                                             @endforeach
                                         </select>
                                         <span class="text-danger">
-                                            @error('category_id')
-                                            {{ $message }}
-                                            @enderror
-                                        </span>
+                                        @error('category_id')
+                                        {{ $message }}
+                                        @enderror
+                                    </span>
                                     </div>
                                 </div>
                                 <div class="col-md-6">

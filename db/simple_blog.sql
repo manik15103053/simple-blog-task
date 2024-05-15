@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 15, 2024 at 08:48 AM
+-- Generation Time: May 15, 2024 at 02:26 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -31,7 +31,7 @@ CREATE TABLE `blogs` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `title` varchar(255) NOT NULL,
   `slug` varchar(255) NOT NULL,
-  `category_id` bigint(20) DEFAULT NULL,
+  `category_id` varchar(255) DEFAULT NULL,
   `text_content` text DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
   `publication_date` varchar(255) DEFAULT NULL,
@@ -46,20 +46,12 @@ CREATE TABLE `blogs` (
 --
 
 INSERT INTO `blogs` (`id`, `title`, `slug`, `category_id`, `text_content`, `image`, `publication_date`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'Java is the most popular languages', 'java-is-the-most-popular-languages', 1, 'Java is among one of the most popular languages out there mainly because of its versatility and compatibility. It is used in a number of things including software development, mobile applications and large system development.', 'images/blog/1715752809.png', '2024-05-15', 1, NULL, '2024-05-15 00:00:09', '2024-05-15 00:00:09'),
-(2, 'The Java programming imparts', 'the-java-programming-imparts', 1, 'The Java programming imparts the fundamental knowledge of developing code using Java programming language. Learn the Java programming language with no prior programming language, only the desire to learn the language', 'images/blog/1715752894.jpg', '2024-05-15', 1, NULL, '2024-05-15 00:01:34', '2024-05-15 00:01:34'),
-(3, 'The Java Programming the complete length', 'the-java-programming-the-complete-length', 1, 'It has emerged to be the most preferred language for programmers. The Java Programming cover covers the complete length and breadth of this platform that one can learn and implement easily for', 'images/blog/1715753004.webp', '2024-05-15', 1, NULL, '2024-05-15 00:03:24', '2024-05-15 00:03:24'),
-(4, 'JavaScript is one of the most programming languages', 'javascript-is-one-of-the-most-programming-languages', 2, 'JavaScript is known for being a naturally very fast programming language that speeds up websites and applications. It enables developers to carry out maintenance and upgrades easily and it makes the debugging process simple', 'images/blog/1715753178.webp', '2024-05-15 00:00:00', 1, 1, '2024-05-15 00:05:03', '2024-05-15 00:06:18'),
-(5, 'it more often than any other programming language', 'it-more-often-than-any-other-programming-language', 2, 'The fact that it can be used alongside other programming languages makes it a catch-all choice for front-end web development.', 'images/blog/1715753142.png', '2024-05-15', 1, NULL, '2024-05-15 00:05:42', '2024-05-15 00:05:42'),
-(6, 'JavaScript is known for being a naturally very fast programming', 'javascript-is-known-for-being-a-naturally-very-fast-programming', 2, 'The fact that it can be used alongside other programming languages makes it a catch-all choice for front-end web development.', 'images/blog/1715753249.jpeg', '2024-05-15', 1, NULL, '2024-05-15 00:07:29', '2024-05-15 00:07:29'),
-(7, 'With so many programming languages to choose from', 'with-so-many-programming-languages-to-choose-from', 3, 'With so many programming languages to choose from, each with its own unique syntax, features and uses, choosing your first programming language to learn can be daunting. Python is an excellent choice if you’re new to coding and looking for a beginner-friendly language. This powerful programming language is both versatile and easy to use.', 'images/blog/1715753352.webp', '2024-05-15', 1, NULL, '2024-05-15 00:09:12', '2024-05-15 00:09:12'),
-(8, 'Python’s various applications include web development', 'pythons-various-applications-include-web-development', 3, 'Python’s various applications include web development, machine learning, system scripting and software testing. Web platforms you may know and love, such as Google, YouTube, Spotify, Pinterest, Dropbox and Netflix, use Python in some capacity.', 'images/blog/1715753390.jpeg', '2024-05-15', 1, NULL, '2024-05-15 00:09:50', '2024-05-15 00:09:50'),
-(9, 'Programs execute in a software environment called CLR', 'programs-execute-in-a-software-environment-called-clr', 5, 'DOT NET runs on Microsoft windows. Programs execute in a software environment called CLR, which has services like exceptional handling, security and memory management. It focuses on the Visual Studio', 'images/blog/1715753493.jpg', '2024-05-15', 1, NULL, '2024-05-15 00:11:33', '2024-05-15 00:11:33'),
-(10, 'It is simple and easy to understand with such elaborated', 'it-is-simple-and-easy-to-understand-with-such-elaborated', 5, 'It has various benefits like best platform for delivering Windows software, stable, scalable, more reliable and lower costs by speeding development.', 'images/blog/1715753538.jpg', '2024-05-15', 1, NULL, '2024-05-15 00:12:18', '2024-05-15 00:12:18'),
-(11, 'The fact that PHP was not originally designed', 'the-fact-that-php-was-not-originally-designed', 4, 'During 2014 and 2015, a new major PHP version was developed, PHP 7. The numbering of this version involved some debate among internal developers.[49] While the PHP 6 Unicode experiments had never been released, several articles and book titles referenced the PHP 6 names, which', 'images/blog/1715753636.jpg', '2024-05-15', 1, NULL, '2024-05-15 00:13:56', '2024-05-15 00:13:56'),
-(12, 'The foundation of PHP 7 is a PHP branch that was originally', 'the-foundation-of-php-7-is-a-php-branch-that-was-originally', 4, 'Nikita Popov,[52] and aimed to optimize PHP performance by refactoring the Zend Engine while retaining near-complete language compatibility.[53] By 14 July 2014, WordPress-based benchmarks', 'images/blog/1715753675.jpg', '2024-05-15', 1, NULL, '2024-05-15 00:14:35', '2024-05-15 00:14:35'),
-(13, 'The numbering of this version involved some debate among internal', 'the-numbering-of-this-version-involved-some-debate-among-internal', 4, 'the PHP 6 Unicode experiments had never been released, several articles and book titles referenced the PHP 6 names, which might have caused confusion if a new release were to reuse the name.[50] After a vote, the name PHP 7 was chosen', 'images/blog/1715753708.webp', '2024-05-15', 1, NULL, '2024-05-15 00:15:08', '2024-05-15 00:15:08'),
-(15, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', 'lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit', 7, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis molestie leo vel sapien porttitor, at bibendum mi tincidunt', 'images/blog/1715755016.png', '2024-05-15', 2, NULL, '2024-05-15 00:36:56', '2024-05-15 00:36:56');
+(1, 'Lorem Ipsum is simply dummy text of the printing and typesetting', 'lorem-ipsum-is-simply-dummy-text-of-the-printing-and-typesetting', '[\"2\",\"4\"]', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', 'images/blog/1715774925.webp', '2024-05-17', 1, NULL, '2024-05-15 06:08:45', '2024-05-15 06:08:45'),
+(2, 'and scrambled it to make a type specimen book.', 'and-scrambled-it-to-make-a-type-specimen-book', '[\"1\",\"4\",\"5\"]', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', 'images/blog/1715774966.jpg', '2024-05-10', 1, NULL, '2024-05-15 06:09:26', '2024-05-15 06:09:26'),
+(3, 'It is a long established fact that a reader', 'it-is-a-long-established-fact-that-a-reader', '[\"2\",\"3\"]', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to', 'images/blog/1715775029.jpg', '2024-05-23', 1, NULL, '2024-05-15 06:10:29', '2024-05-15 06:10:29'),
+(4, 'The standard chunk of Lorem Ipsum used', 'the-standard-chunk-of-lorem-ipsum-used', '[\"2\",\"1\"]', 'The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections', 'images/blog/1715775079.jpg', '2024-05-23', 1, NULL, '2024-05-15 06:11:19', '2024-05-15 06:11:19'),
+(5, 'There are many variations of passages', 'there-are-many-variations-of-passages', '[\"1\",\"5\"]', 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which', 'images/blog/1715775125.jpg', '2024-05-25', 1, NULL, '2024-05-15 06:12:05', '2024-05-15 06:12:05'),
+(6, 'This is the another test', 'this-is-the-another-test', '[\"2\",\"3\",\"1\"]', 'asdfasdfsad', 'images/blog/1715775781.jpg', '2024-05-24', 2, NULL, '2024-05-15 06:23:01', '2024-05-15 06:23:01');
 
 -- --------------------------------------------------------
 
@@ -83,12 +75,12 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `name`, `slug`, `priority`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'JAVA', 'java', '1', 1, NULL, '2024-05-14 23:52:44', '2024-05-14 23:52:44'),
-(2, 'JavaScript', 'javascript', '2', 1, NULL, '2024-05-14 23:53:05', '2024-05-14 23:53:05'),
-(3, 'Python', 'python', '3', 1, NULL, '2024-05-14 23:53:25', '2024-05-14 23:53:25'),
-(4, 'PHP', 'php', '4', 1, NULL, '2024-05-14 23:53:40', '2024-05-14 23:53:40'),
-(5, 'Dot Net', 'dot-net', '3', 1, NULL, '2024-05-14 23:54:00', '2024-05-14 23:54:00'),
-(7, 'jQUEREY', 'jquerey', '5', 2, 2, '2024-05-15 00:35:10', '2024-05-15 00:35:21');
+(1, 'PHP', 'php', '3', 1, NULL, '2024-05-15 06:04:40', '2024-05-15 06:04:40'),
+(2, 'JAVA', 'java', '1', 1, NULL, '2024-05-15 06:04:49', '2024-05-15 06:04:49'),
+(3, 'Python', 'python', '2', 1, NULL, '2024-05-15 06:04:59', '2024-05-15 06:04:59'),
+(4, 'JavaScript', 'javascript', '6', 1, NULL, '2024-05-15 06:05:36', '2024-05-15 06:05:36'),
+(5, 'jQUEREY', 'jquerey', '6', 1, NULL, '2024-05-15 06:07:17', '2024-05-15 06:07:17'),
+(6, 'C#', 'c', '5', 1, NULL, '2024-05-15 06:07:31', '2024-05-15 06:07:31');
 
 -- --------------------------------------------------------
 
@@ -185,9 +177,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `username`, `user_role`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'admin@gmail.com', 'admin', 1, NULL, '$2y$12$NamXukS7GrISnYW1ItFAA.ZmkREgAiAKsyqV9C6p.geZbAJDLZEJK', NULL, '2024-05-14 23:49:22', '2024-05-14 23:49:22'),
-(2, 'Moshiur Rahman', 'moshiur@gmail.com', 'moshiur', 2, NULL, '$2y$12$P8QkqeAjmQEyPa15u1X0DO0qvevuB0tyxqRe3RA/f3G.qiJ3XB35a', NULL, '2024-05-15 00:33:31', '2024-05-15 00:33:31'),
-(3, 'Md Manik', 'manik@gmail.com', 'manik', 2, NULL, '$2y$12$uxJqMhhChlLncCe6g//Lpey9rTIbzjtAILnHb/qM27kFkM28s.0Qm', NULL, '2024-05-15 00:43:59', '2024-05-15 00:47:46');
+(1, 'Admin', 'admin@gmail.com', 'admin', 1, NULL, '$2y$12$KI/cy8y7DINP978r6xpWdOsB5FgWv.6nCECAvUxXL5a6aYIxGljSi', NULL, '2024-05-15 06:04:00', '2024-05-15 06:04:00'),
+(2, 'Md Manik', 'manik@gmail.com', 'manik', 2, NULL, '$2y$12$ezqLn8wc1w5DDPaf0BgsM.gvKryIUHZ5nkv6Z5FyvJHkmLM0K0uye', NULL, '2024-05-15 06:21:16', '2024-05-15 06:21:16');
 
 --
 -- Indexes for dumped tables
@@ -248,13 +239,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `blogs`
 --
 ALTER TABLE `blogs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -278,7 +269,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

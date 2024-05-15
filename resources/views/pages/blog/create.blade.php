@@ -18,8 +18,8 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="name">Category <small class="text-danger">*</small></label>
-                                        <select name="category_id" id="category_id" class="form-control">
-                                            <option selected disabled>Select One</option>
+                                        <select name="category_id[]" id="category_id" class="form-control select2" multiple >
+                                            <option  disabled>Select One</option>
                                             @foreach($categories as $item)
                                                 <option value="{{ $item->id }}">{{ $item->name }}</option>
                                             @endforeach
