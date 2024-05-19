@@ -14,10 +14,12 @@ use Illuminate\Support\Facades\Mail;
 
 class ForgetPasswordController extends Controller
 {
+    //Forget password view
     public function forgetPass(){
         return view('auth.forget-password');
     }
 
+    //sent reset link in email functionality
     public function sendResetLink(Request $request){
         $request->validate([
             'email' => 'required|email|exists:users,email'
@@ -55,11 +57,14 @@ class ForgetPasswordController extends Controller
 
     }
 
+    //Show reset password form
     public function showResetForm (Request $request, $token = null){
 
         return view('auth.reset-form')->with(['token' => $token,'email'=>$request->email]);
     }
 
+
+    //Reset password and check email 
     public function resetPassword(Request $request){
 
         $request->validate([

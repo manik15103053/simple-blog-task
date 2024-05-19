@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class UserDashboardController extends Controller
 {
+    //User Dashboard functionality and Total Category, Blog and user count
     public function dashboard(){
         if(Auth::user()->user_role == 1){
             $data['total_blog'] = Blog::count();
@@ -27,6 +28,7 @@ class UserDashboardController extends Controller
         return view('pages.dashboard',$data);
     }
 
+    //All User display Functionality
     public function allUser()
     {
         if(Auth::user()->user_role == 1){

@@ -2,122 +2,81 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Blog;
+use App\Http\Requests\BlogRequest;
 use App\Models\Category;
+use App\Repositories\BlogRepositories;
+use Exception;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
+
 
 class BlogController extends Controller
 {
-    public function index()
-    {
-        if(Auth::user()->user_role == 1){
-            $data['blogs'] = Blog::orderBy('id','desc')->get();
-        }elseif(Auth::user()->user_role == 2){
-            $data['blogs'] = Blog::where('created_by',Auth::user()->id)->orderBy('id','desc')->get();
-        }
+    protected $blog;
 
-        return view('pages.blog.index',$data);
+    //Use Access Modifier and maintain the all functionality in repositories interface
+    public function __construct(BlogRepositories $blog)
+    {
+            $this->blog = $blog;
     }
 
+    //Show all Blogs in read operation
+    public function index()
+    {
+        try{
+            $data['blogs'] = $this->blog->all();
+            return view('pages.blog.index',$data);
+        }catch(Exception $e){
+            return back()->with('error', 'Sorry Something went wrong.');
+        }
+    }
+
+    //Blog Cerate page
     public function create()
     {
         $data['categories'] = Category::orderBy('priority','asc')->get();
         return view('pages.blog.create',$data);
     }
-    public function store(Request $request)
+
+    //Blog Store Functionality use validation in Blog request
+    public function store(BlogRequest $request)
     {
-        $this->validate($request,[
 
-            'title'             =>  'required|max:100',
-            'category_id'       =>   'required',
-            'text_content'      =>   'required|string',
-            'publication_date'  =>   'required|date',
-        ],
-            [
-                'category_id.required' => 'Category field is required'
-            ]
-        );
         try {
-            $blog = new Blog();
-
-            if ($request->hasFile('image')) {
-                $file = $request->file('image');
-                $ext = $file->getClientOriginalExtension();
-                $fileName = time() . '.' . $ext;
-                $file->move('images/blog/', $fileName);
-                $blog->image = 'images/blog/' . $fileName; // Set the image path
-            }
-
-            $blog->title = $request->title;
-            $blog->slug = Str::slug($request->title);
-            $blog->category_id = json_encode($request->category_id);
-            $blog->text_content = $request->text_content;
-            $blog->publication_date = $request->publication_date;
-            $blog->created_by = auth()->id();
-
-            $blog->save();
+            $this->blog->store($request->all());
             return redirect()->route('blog.index')->with('success', 'Blog created successfully.');
         }catch (Exception $e){
             return redirect()->route('blog.create')->with('error','Sorry Something went to wrong');
         }
 
     }
-
+    //Edit Functionality show edit pages
     public function edit($slug)
     {
-        $data['blog'] = Blog::where('slug',$slug)->first();
+        $data['blog'] = $this->blog->getData($slug);
         $data['categories'] = Category::orderBy('priority','asc')->get();
         return view('pages.blog.edit',$data);
     }
 
+    //Update Functionality use validation in Blog request
     public function update(Request $request, $slug)
     {
-        $this->validate($request,[
 
-            'title'             =>  'required|max:100',
-            'category_id'       =>   'required',
-            'text_content'      =>   'required|string',
-            'publication_date'  =>   'required|date',
-        ],
-            [
-                'category_id.required' => 'Category field is required'
-            ]
-        );
         try {
-            $blog = Blog::where('slug',$slug)->first();
-
-            if ($request->hasFile('image')) {
-                $file = $request->file('image');
-                $ext = $file->getClientOriginalExtension();
-                $fileName = time() . '.' . $ext;
-                $file->move('images/blog/', $fileName);
-                $blog->image = 'images/blog/' . $fileName; // Set the image path
-            }
-
-            $blog->title = $request->title;
-            $blog->slug = Str::slug($request->title);
-            $blog->category_id = json_encode($request->category_id);
-            $blog->text_content = $request->text_content;
-            $blog->publication_date = Carbon::parse($request->publication_date);
-            $blog->updated_by = auth()->id();
-            $blog->save();
+            $this->blog->update($request->all(), $slug);
             return redirect()->route('blog.index')->with('success', 'Blog updated successfully.');
         }catch (Exception $e){
             return redirect()->route('blog.edit')->with('error','Sorry Something went to wrong');
         }
     }
 
+    //Delete Functionality
     public function delete($slug)
     {
         try {
-            $blog = Blog::where('slug',$slug)->first();
-            if(!empty($blog)){
-                $blog->delete();
-                return redirect()->back()->with('success','Blog Deleted Successfully');
-            }
+
+            $this->blog->delete($slug);
+            return redirect()->back()->with('success','Blog Deleted Successfully');
+
         }catch (Exception $e) {
             return redirect()->back()->with('error', 'Sorry Something went to wrong');
         }

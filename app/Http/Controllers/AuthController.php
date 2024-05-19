@@ -9,12 +9,13 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
+    //Display registration form
     public function register(){
         return view('auth.register');
     }
 
+    //User Registration
     public function regisSub(Request $request){
-
 
         $request->validate([
             'name' => 'required',
@@ -36,11 +37,15 @@ class AuthController extends Controller
         $user->save();
         return redirect()->back()->with('success','Registration has been successfully');
 
-        }
+    }
+
+    //User Login form
     public function login(){
         return view('auth.login');
     }
 
+
+    //User login functionality
     public function check(Request $request){
         $request->validate([
             'email' => 'required|email|exists:users,email',
@@ -53,10 +58,11 @@ class AuthController extends Controller
         if(Auth::guard('web')->attempt($check)){
             return redirect()->route('dashboard')->with('success','Login Has been Successfully');
         }else{
-            return redirect()->route('login')->with('fail', 'Incorrect Credentials');
+            return redirect()->route('login')->with('error', 'Incorrect Credentials');
         }
     }
 
+    //Logout Functionality
     public function logout(){
         Auth::guard('web')->logout();
         return redirect('/');
